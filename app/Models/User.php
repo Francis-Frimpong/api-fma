@@ -14,6 +14,7 @@ class User{
         $sql = "SELECT * FROM users WHERE email = ?";
 
         $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$data]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     

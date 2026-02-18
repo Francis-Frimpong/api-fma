@@ -1,6 +1,6 @@
 <?php
 use Firebase\JWT\JWT;
-use Firebase\JWT\key;
+use Firebase\JWT\Key;
 
 class JWTHandler{
     private $secretKey;

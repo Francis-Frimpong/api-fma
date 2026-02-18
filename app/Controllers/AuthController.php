@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/../Models/User.php';
-require_once __DIR__ . '../Core/JWTHandler.php';
+require_once __DIR__ . '/../Core/JWTHandler.php';
 
 class AuthController{
     private $userModel;
@@ -55,7 +55,41 @@ class AuthController{
                     'message' => 'Registration failed'
                 ], 500);
             }
+    }
 
+    public function login()
+    {
+        // Get JSON input
+        $data = json_decode(file_get_contents('php://input'), true);
 
+        if(!$data){
+            Response::json(['error' => 'Invalid JSON or empty body'], 400);
+            return;
+        }
+
+        // Validate required fields
+        if(empty(trim($data['email'])) || empty(trim($data['password']))){
+            Response::json(['error' => 'Email and password are required'], 400);
+            return;
+        }
+
+        // Find user by email
+        $user = $this->userModel->findUserByEmail($data['email']);
+        
+
+        if(!$user){
+            Response::json(['error' => 'Invalid credentials'], 401);
+            return;
+        }
+
+        // login successful
+        $jwt = new JWTHandler();
+        $token = $jwt->generateToken($user);
+
+        Response::json([
+            'status' => 'success',
+            'message' => 'Login successful',
+            'token' => $token
+        ]);
     }
 }
