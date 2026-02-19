@@ -4,7 +4,7 @@ require_once __DIR__ .'/JWTHandler.php';
 class Authmiddleware{
     public static function handle()
     {
-        $headers = function_exists(('getallheaders') ? getallheaders() : []);
+        $headers = function_exists('getallheaders') ? getallheaders() : [];
         $token = null;
 
         if(isset($headers['X-Auth-Token'])){
@@ -26,6 +26,6 @@ class Authmiddleware{
             exit;
         }
         
-        return $decoded->date;
+        return  $decoded->data;
     }
 }
