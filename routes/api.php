@@ -3,6 +3,7 @@ require_once __DIR__ . '/../app/Core/Router.php';
 require_once __DIR__ . '/../app/Controllers/AuthController.php';
 require_once __DIR__ . '/../app/Controllers/DashboardController.php';
 require_once __DIR__ . '/../app/Controllers/IncomeController.php';
+require_once __DIR__ . '/../app/Controllers/AddIncomeController.php';
 
 $router = new Router();
 
@@ -22,6 +23,9 @@ $router->get('/income', [IncomeController::class, 'getAllIncome'], ['auth']);
 
 // delete single income data
 $router->delete('/income/{id}', [IncomeController::class, 'deleteSingleIncome'], ['auth']);
+
+// add income data
+$router->post('/addIncome', [AddIncomeController::class, 'addIncomeData'], ['auth']);
 
 
 $router->dispatch();
