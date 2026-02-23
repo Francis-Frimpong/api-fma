@@ -25,7 +25,6 @@ class Income{
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id, $user_id]);
-
         return ['message' => 'Income data deleted'];
 
     }

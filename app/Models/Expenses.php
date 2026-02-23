@@ -19,5 +19,13 @@ class Expenses{
 
     }
 
+    public function deleteData($id, $user_id)
+    {
+        $sql = "DELETE FROM expenses WHERE id = ? AND user_id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id, $user_id]);
+        return ['message' => 'Expenses data deleted'];
 
+
+    }
 }

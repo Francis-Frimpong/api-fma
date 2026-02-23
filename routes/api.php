@@ -32,5 +32,8 @@ $router->delete('/income/{id}', [IncomeController::class, 'deleteSingleIncome'],
 // user expenses data
 $router->get('/expenses', [ExpenseController::class, 'getAllExpenses'], ['auth']);
 
+// delete single income data
+$router->delete('/expenses/{id}', [ExpenseController::class, 'destroy'], ['auth']);
+
 
 $router->dispatch();

@@ -22,4 +22,11 @@ class ExpenseController{
 
         Response::json($data, 200);
     }
+
+    public function destroy($id)
+    {
+        $user = $GLOBALS['auth_user'] = Authmiddleware::handle();
+        $data = $this->expenses->deleteData($id, $user->id);
+        Response::json($data, 200);
+    }
 }
