@@ -4,6 +4,7 @@ require_once __DIR__ . '/../app/Controllers/AuthController.php';
 require_once __DIR__ . '/../app/Controllers/DashboardController.php';
 require_once __DIR__ . '/../app/Controllers/IncomeController.php';
 require_once __DIR__ . '/../app/Controllers/AddIncomeController.php';
+require_once __DIR__ . '/../app/Controllers/ExpenseController.php';
 
 $router = new Router();
 
@@ -21,11 +22,15 @@ $router->get('/dashboard', [DashboardController::class, 'userStats'], ['auth']);
 // user income data
 $router->get('/income', [IncomeController::class, 'getAllIncome'], ['auth']);
 
+// add income data
+$router->post('/addIncome', [AddIncomeController::class, 'addIncomeData'], ['auth']);
+
 // delete single income data
 $router->delete('/income/{id}', [IncomeController::class, 'deleteSingleIncome'], ['auth']);
 
-// add income data
-$router->post('/addIncome', [AddIncomeController::class, 'addIncomeData'], ['auth']);
+
+// user expenses data
+$router->get('/expenses', [ExpenseController::class, 'getAllExpenses'], ['auth']);
 
 
 $router->dispatch();

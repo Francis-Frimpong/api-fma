@@ -3,7 +3,7 @@ require_once __DIR__ . '/AuthMiddleware.php';
 require_once __DIR__ . '/Response.php';
 
 
-// use App\Core\AuthMiddleware;
+// Http request methods
 
 
 class Router
