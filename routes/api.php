@@ -5,6 +5,7 @@ require_once __DIR__ . '/../app/Controllers/DashboardController.php';
 require_once __DIR__ . '/../app/Controllers/IncomeController.php';
 require_once __DIR__ . '/../app/Controllers/AddIncomeController.php';
 require_once __DIR__ . '/../app/Controllers/ExpenseController.php';
+require_once __DIR__ . '/../app/Controllers/AddExpensesController.php';
 
 $router = new Router();
 
@@ -32,7 +33,10 @@ $router->delete('/income/{id}', [IncomeController::class, 'deleteSingleIncome'],
 // user expenses data
 $router->get('/expenses', [ExpenseController::class, 'getAllExpenses'], ['auth']);
 
-// delete single income data
+// add expenses data
+$router->post('/addExpenses', [AddExpensesController::class, 'addExpensesData'], ['auth']);
+
+// delete single expenses data
 $router->delete('/expenses/{id}', [ExpenseController::class, 'destroy'], ['auth']);
 
 
