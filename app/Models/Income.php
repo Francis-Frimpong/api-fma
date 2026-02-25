@@ -27,6 +27,7 @@ class Income{
         $totalRecords = $countStmt->fetchColumn();
 
         $totalPages = ceil($totalRecords / $limit);
+        
         if($totalPages < 1){
             $totalPages = 1;
         }
