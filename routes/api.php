@@ -20,6 +20,8 @@ $router->post('/login',[AuthController::class, 'login']);
 // user dashboard
 $router->get('/dashboard', [DashboardController::class, 'userStats'], ['auth']);
 
+$router->get('/dashboard', [DashboardController::class, 'monthlySummary'], ['auth']);
+
 // user income data
 $router->get('/income', [IncomeController::class, 'getAllIncome'], ['auth']);
 
